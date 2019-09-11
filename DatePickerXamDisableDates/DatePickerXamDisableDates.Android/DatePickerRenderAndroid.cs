@@ -33,10 +33,10 @@ namespace DatePickerXamDisableDates.Droid
             GradientDrawable gd = new GradientDrawable();
             gd.SetStroke(0, Android.Graphics.Color.Transparent);
             Control.SetBackgroundDrawable(gd);
-           // SetDate(Element.Maximumdate);
-            UpdateMaximumDate();
-             UpdateMinimumDate();
-          //  SetDate(Element.Minimumdate);
+           // SetDatemax(Element.Maximumdate);
+            //UpdateMaximumDate();
+            //   UpdateMinimumDate();
+           // SetDatemin(Element.Minimumdate);
 
         }
         void UpdateMaximumDate()
@@ -70,12 +70,12 @@ namespace DatePickerXamDisableDates.Droid
 
             if (e.PropertyName == Xamarin.Forms.DatePicker.DateProperty.PropertyName || e.PropertyName == Xamarin.Forms.DatePicker.FormatProperty.PropertyName)
                 SetDate(Element.Date);
-            else if (e.PropertyName == DatePicker.MinimumDateProperty.PropertyName)
-               // SetDate(Element.Minimumdate);
-              UpdateMinimumDate();
-            else if (e.PropertyName == DatePicker.MaximumDateProperty.PropertyName)
-             //   SetDate(Element.Maximumdate);
-             UpdateMaximumDate();
+             if (e.PropertyName == DatePicker.MinimumDateProperty.PropertyName)
+                SetDate(Element.Minimumdate);
+             // UpdateMinimumDate();
+            if (e.PropertyName == DatePicker.MaximumDateProperty.PropertyName)
+                SetDate(Element.Maximumdate);
+            // UpdateMaximumDate();
         }
 
         void OnPickerFocusChange(object sender, Android.Views.View.FocusChangeEventArgs e)
@@ -113,6 +113,16 @@ namespace DatePickerXamDisableDates.Droid
         {
             this.Control.Text = date.ToString(Element.Format);
             Element.Date = date;
+        }
+        void SetDatemin(DateTime date)
+        {
+            this.Control.Text = date.ToString(Element.Format);
+            Element.Minimumdate = date;
+        }
+        void SetDatemax(DateTime date)
+        {
+            this.Control.Text = date.ToString(Element.Format);
+            Element.MaximumDate = date;
         }
 
         private void ShowDatePicker()

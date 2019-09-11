@@ -22,6 +22,11 @@ namespace DatePickerXamDisableDates
                 SetValue(PlaceHolderProperty, value);
             }
         }
+        public static readonly BindableProperty MaximumdateProperty = BindableProperty.Create(nameof(Minimumdate),
+            typeof(DateTime), typeof(DatePicker), MaximumdateProperty);
+
+        public static readonly BindableProperty MinimumdateProperty = BindableProperty.Create(nameof(Maximumdate), 
+            typeof(DateTime), typeof(DatePicker), MinimumdateProperty);
         public DateTime Maximumdate
         {
             get { return (DateTime)GetValue(MaximumdateProperty); }
@@ -33,24 +38,18 @@ namespace DatePickerXamDisableDates
             get { return (DateTime)GetValue(MinimumdateProperty); }
             set { SetValue(MinimumdateProperty, value); }
         }
-        public static readonly BindableProperty MinimumdateProperty = BindableProperty.Create(nameof(Minimumdate),
-            typeof(DateTime), typeof(DatePicker));
+       
 
-        public static readonly BindableProperty MaximumdateProperty = BindableProperty.Create(nameof(Maximumdate),
-            typeof(DateTime), typeof(DatePicker)
-         );
+        //public static readonly BindableProperty MinimumdateProperty = BindableProperty.Create(nameof(Minimumdate),
+        //    typeof(DateTime), typeof(DatePicker));
+
+        //public static readonly BindableProperty MaximumdateProperty = BindableProperty.Create(nameof(Maximumdate),
+        //    typeof(DateTime), typeof(DatePicker)
+        // );
         public static readonly BindableProperty NullableDateProperty =
         BindableProperty.Create(nameof(NullableDate), typeof(DateTime?), typeof(DatePickerRender), null, defaultBindingMode: BindingMode.TwoWay);
 
-        static bool ValidateMaximumDate(BindableObject bindable, object value)
-        {
-            return (DateTime)value >= ((DatePicker)bindable).MinimumDate;
-        }
-
-        static bool ValidateMinimumDate(BindableObject bindable, object value)
-        {
-            return (DateTime)value <= ((DatePicker)bindable).MaximumDate;
-        }
+       
         public DateTime? NullableDate
         {
             get { return (DateTime?)GetValue(NullableDateProperty); }
@@ -72,20 +71,6 @@ namespace DatePickerXamDisableDates
 
             }
 
-        }
-        void UpdateMaximumDate()
-        {
-                this.MaximumDate = Maximumdate;// (long)(DateTime.Now.Date.AddDays(3).Millisecond);
-
-           
-        }
-
-        void UpdateMinimumDate()
-        {
-            
-                MinimumDate = Minimumdate;// (long)(DateTime.Now.Date - new DateTime(1970, 1, 1)).TotalMilliseconds - 1000 * 60 * 60 * 24 * 3;
-
-           
         }
         protected override void OnBindingContextChanged()
         {
@@ -124,9 +109,9 @@ namespace DatePickerXamDisableDates
         }
         public void AssignValue()
         {
-            NullableDate = Date;
-           // UpdateMaximumDate();
-           // UpdateMinimumDate();
+              NullableDate = Date;
+            //UpdateMaximumDate();
+            //UpdateMinimumDate();
             UpdateDate();
 
         }

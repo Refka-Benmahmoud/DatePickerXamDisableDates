@@ -7,14 +7,14 @@
     <StackLayout Padding="1" VerticalOptions="Center">
         <!-- Place new controls here -->
         <Label Text="without custom render" HorizontalOptions="Center"></Label>
-        <DatePicker MinimumDate="{Binding minimumdate}" MaximumDate="{Binding maximumdate}" x:Name="Mypicker" 
+        <DatePicker  x:Name="Mypicker" 
            HorizontalOptions="Center"
            VerticalOptions="Center" 
                    />
         <Label Text="with custom render" HorizontalOptions="Center"></Label>
         <local:DatePickerRender x:Name="DateEvent" 
          PlaceHolder="All"
-         HorizontalOptions="Center"
+         HorizontalOptions="Center" 
           VerticalOptions="Center">
         </local:DatePickerRender>
     </StackLayout>

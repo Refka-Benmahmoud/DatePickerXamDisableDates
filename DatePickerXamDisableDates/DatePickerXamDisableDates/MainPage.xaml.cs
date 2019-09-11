@@ -12,10 +12,11 @@ namespace DatePickerXamDisableDates
         public MainPage()
         {
             InitializeComponent();
+            DateEvent.Format = "yyyy'-'MM'-'dd";
             Mypicker.MinimumDate = DateTime.Now;
             Mypicker.MaximumDate = DateTime.Now.Date.AddDays(5.0);
-            DateEvent.MinimumDate = DateTime.Now;
-            DateEvent.MaximumDate = DateTime.Now.Date.AddDays(5.0);
+            DateEvent.Minimumdate = DateTime.Now;
+            DateEvent.Maximumdate = DateTime.Now.AddDays(5.0);
         }
     }
 }
